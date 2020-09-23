@@ -1,0 +1,32 @@
+.parent {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.imgDivParent {
+  height: 100%;
+  width: 20%;
+}
+
+.imgDiv {
+  height: 50%;
+  border-bottom: 2px solid black;
+}
+
+.infoDiv {
+  width: 80%;
+  border: 2px solid black;
+  border-top: none;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoDiv_cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30%;
+}

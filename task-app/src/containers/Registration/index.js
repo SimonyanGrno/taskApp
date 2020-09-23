@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 import { RegistrationContext } from '@/contexts/registrationContext';
+import './styles.css';
 
 const { Group, Control } = Form;
 
@@ -12,6 +13,7 @@ function Registration({ history }) {
   const [education, setEducation] = useState('');
   const [pic, setPic] = useState(null);
   const uploadedImage = useRef(null);
+  const imageUploader = useRef(null);
 
   const handleUploadChange = ({ target: { files } }) => {
     const [file] = files;
@@ -30,7 +32,7 @@ function Registration({ history }) {
   const handleSubmit = event => {
     event.preventDefault();
 
-    if (!name.length || !education.length || !pic.length) {
+    if (!name.length || !education.length || !pic) {
       setValidated(true);
       return;
     }
@@ -51,30 +53,28 @@ function Registration({ history }) {
     <div className="container">
       <div className="col-md-6 offset-md-3 mt-3">
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <div
+            className="mb-2 imgParent"
+            onClick={() => imageUploader.current.click()}
+          >
+            <img ref={uploadedImage} alt="" />
+            <span>upload image</span>
+          </div>
+
           <Group controlId="ProfPic">
             <Control
               type="file"
               required
               placeholder="Select Profile Picture"
               onChange={handleUploadChange}
+              style={{ display: 'none' }}
+              ref={imageUploader}
             />
             <Control.Feedback type="invalid">
               Profile Picture is required.
             </Control.Feedback>
           </Group>
 
-          <div className="mb-2 text-center">
-            <img
-              ref={uploadedImage}
-              alt="pic"
-              style={{
-                width: '100px',
-                height: '100px',
-                borderRadius: '50%',
-                display: pic ? 'inline-block' : 'none',
-              }}
-            />
-          </div>
           <Group controlId="Name">
             <Control
               type="text"

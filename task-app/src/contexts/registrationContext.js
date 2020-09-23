@@ -1,11 +1,9 @@
 import React, { createContext, useReducer } from 'react';
 
 const initialState = {
-  regData: {
-    name: '',
-    education: '',
-    pic: [],
-  },
+  name: '',
+  education: '',
+  pic: '',
 };
 
 function reducer(state = initialState, action) {
