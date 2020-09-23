@@ -80,7 +80,8 @@ module.exports = {
     'react/self-closing-comp': 0,
     'react/sort-comp': 0,
     'require-yield': 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "no-plusplus": 0,
   },
   // overrides: [
   //   {
